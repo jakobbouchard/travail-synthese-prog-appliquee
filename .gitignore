@@ -1,0 +1,3 @@
+# Hide config files so as to not leak passwords
+app.ini.php
+mandat.pdf
