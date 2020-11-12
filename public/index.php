@@ -6,10 +6,7 @@
   require( 'utils/config.php' );
   $page_title = HOME_TITLE;
 
-  // S'il n'y a pas d'utilisateur connecté, inclure le script de déconnexion
-  if (!$_SESSION['username']) {
-    include( UTIL_LOGOUT );
-  }
+  include( ACCESS_CONNECTED );
 ?>
 <!DOCTYPE html>
 <html lang="fr">

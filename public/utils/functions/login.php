@@ -68,6 +68,7 @@
       // Si les identifiants sont corrects, générer la session et naviguer au tableau de bord
       if ($user['password'] == $password) {
         session_regenerate_id(true);
+        $_SESSION['connected'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['displayName'] = $user['displayName'];
 

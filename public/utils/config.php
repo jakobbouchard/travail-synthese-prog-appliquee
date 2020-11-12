@@ -10,6 +10,7 @@
   define('UTIL_LOGOUT',       'logout.php');
 
   define('DIR_ACCESS',        'access/');
+  define('ACCESS_CONNECTED',  DIR_ACCESS . 'connected.php');
 
   define('DIR_FUNCTIONS',     'functions/');
   define('FUNCTION_LOGIN',    DIR_UTILS . DIR_FUNCTIONS . 'login.php');
