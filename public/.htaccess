@@ -1,0 +1,4 @@
+# Enable Brotli compression (much better than gzip)
+<IfModule brotli_module>
+AddOutputFilterByType BROTLI_COMPRESS text/css text/csv text/html text/plain text/richtext text/sgml text/tab-separated-values application/javascript application/x-javascript httpd/unix-directory
+</IfModule>
