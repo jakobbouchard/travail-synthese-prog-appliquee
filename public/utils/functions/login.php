@@ -12,8 +12,7 @@
     } elseif (array_key_exists('postdata', $_SESSION)) {
       $username = trim($_SESSION['postdata']['username']);
       $password = trim($_SESSION['postdata']['password']);
-
-      include( UTIL_CONNECT );
+      $usertype = $sql_query = '';
 
       // Récupérer l'utilisateur
       switch (strlen($username)) {
@@ -57,6 +56,8 @@
           break;
       }
 
+      include( UTIL_CONNECT );
+
       try {
         $stmt = $connectedDB->prepare($sql_query);
         $stmt->execute([
@@ -80,7 +81,7 @@
         $connectedDB = null;
         unset($_SESSION['postdata'], $password);
 
-        header('location: index.php');
+        header('location: ./');
         exit;
 
       } else {
