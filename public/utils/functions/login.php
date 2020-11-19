@@ -24,6 +24,7 @@
                         FROM   acces_employeurs
                         WHERE  noemployeur = :username
                         LIMIT  1";
+          $userType = 'employeur';
           break;
 
         case 5:
@@ -33,6 +34,7 @@
                         FROM   acces_adm
                         WHERE  noemploye = :username
                         LIMIT  1";
+          $userType = 'superviseur';
           break;
 
         case 7:
@@ -42,6 +44,7 @@
                         FROM   acces_etu
                         WHERE  numetu = :username
                         LIMIT  1";
+          $userType = 'etudiant';
           break;
 
         default:
@@ -71,6 +74,7 @@
         $_SESSION['connected'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['displayName'] = $user['displayName'];
+        $_SESSION['userType'] = $userType;
 
         // Déconnecter la base de données, détruire les variables
         $connectedDB = null;
