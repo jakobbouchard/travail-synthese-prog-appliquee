@@ -31,6 +31,66 @@
     </div>
 
 <?php
+  if ($_SESSION['userType'] == 'employeur') {
+    include( UTIL_CONNECT );
+
+    $sql_query = 'SELECT numetu,
+                         nometu,
+                         nomsup
+                  FROM   acces_etu
+                  WHERE  noemployeur = :username';
+
+    try {
+      $interns = $connectedDB->prepare($sql_query);
+      $interns->execute([
+        ':username' => $_SESSION['username']
+      ]);
+
+    } catch(PDOException $e) {
+      echo 'Error: ' . $e->getMessage();
+    }
+?>
+    <div class="card my-4 border-0 shadow">
+      <div class="py-3 card-header bg-white">
+        <h2 class="h3">Liste des stagiaires</h2>
+        <h3 class="h5">Voici la liste de tous les stagiaires à évaluer.</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Stagiaire</th>
+                <th scope="col">Superviseur</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+<?php
+foreach ($interns as $intern) {
+?>
+              <tr>
+                <td><?= $intern['nometu'] ?></td>
+                <td><?= $intern['nomsup'] ?></td>
+                <td>
+                  <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
+                    <span class="fas fa-file fa-fw fa-2x text-success"></span>
+                  </a>
+                  <a class="text-decoration-none" href="create.php?type=evaluation?intern=<?= $intern['numetu'] ?>">
+                    <span class="fas fa-fw fa-2x fa-file-signature text-warning"></span>
+                  </a>
+                </td>
+              </tr>
+<?php
+}
+?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<?php
   } elseif ($_SESSION['userType'] == 'superviseur') {
     include( UTIL_CONNECT );
 
@@ -144,37 +204,38 @@
           Vous <?= $reportCount == 0 ? 'n\'' : '' ?>avez complété
           <strong><?= $reportCount > 0 ? $reportCount : 'aucun' ?></strong>
           journa<?= $reportCount <= 1 ? 'l' : 'ux' ?> de bord.
-          <a href="create.php">Créez une nouvelle entrée de journal.</a>
+          <a href="create.php?type=report">Créez une nouvelle entrée de journal.</a>
         </p>
       </div>
       <div class="card-body">
-        <table class="table table-striped table-bordered table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Numéro</th>
-              <th scope="col">Date</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Numéro</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
 <?php
     foreach ($reports as $report) {
 ?>
-            <tr>
-              <th scope="row"><?= $report['numero'] ?></th>
-              <td><?= $report['DateJournal'] ?></td>
-              <td>
-                <a href="display.php?num=<?= $report['numero'] ?>">
-                  <span class="fas fa-file-alt fa-2x"></span>
-                </a>
-              </td>
-            </tr>
-
+              <tr>
+                <th scope="row"><?= $report['numero'] ?></th>
+                <td><?= $report['DateJournal'] ?></td>
+                <td>
+                  <a class="text-decoration-none" href="display.php?id=<?= $report['numero'] ?>">
+                    <span class="fas fa-fw fa-2x fa-file text-secondary"></span>
+                  </a>
+                </td>
+              </tr>
 <?php
     }
 ?>
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 <?php } ?>
