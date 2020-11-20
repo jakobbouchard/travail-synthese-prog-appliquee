@@ -6,10 +6,7 @@
   require( 'utils/config.php' );
   $page_title = HOME_TITLE;
 
-  // S'il n'y a pas d'utilisateur connecté, inclure le script de déconnexion
-  if (!$_SESSION['username']) {
-    include( UTIL_LOGOUT );
-  }
+  include( ACCESS_CONNECTED );
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -28,25 +25,221 @@
 ?>
   <!-- END INCLUDE HEADER -->
 
-  <div class="container-fluid">
-    <div class="row">
-
-      <!-- START INCLUDE NAVIGATION -->
-<?php
-  include( VIEW_NAVIGATION );
-?>
-      <!-- END INCLUDE NAVIGATION -->
-
-      <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        <div class="container">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Tableau de bord</h1>
-          </div>
-        </div>
-      </main>
-
+  <main class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Tableau de bord</h1>
     </div>
-  </div>
+
+<?php
+  if ($_SESSION['userType'] == 'employeur') {
+    include( UTIL_CONNECT );
+
+    $sql_query = 'SELECT numetu,
+                         nometu,
+                         nomsup
+                  FROM   acces_etu
+                  WHERE  noemployeur = :username';
+
+    try {
+      $interns = $connectedDB->prepare($sql_query);
+      $interns->execute([
+        ':username' => $_SESSION['username']
+      ]);
+
+    } catch(PDOException $e) {
+      echo 'Error: ' . $e->getMessage();
+    }
+?>
+    <div class="card my-4 border-0 shadow">
+      <div class="py-3 card-header bg-white">
+        <h2 class="h3">Liste des stagiaires</h2>
+        <h3 class="h5">Voici la liste de tous les stagiaires à évaluer.</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Stagiaire</th>
+                <th scope="col">Superviseur</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+<?php
+foreach ($interns as $intern) {
+?>
+              <tr>
+                <td><?= $intern['nometu'] ?></td>
+                <td><?= $intern['nomsup'] ?></td>
+                <td>
+                  <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
+                    <span class="fas fa-file fa-fw fa-2x text-success"></span>
+                  </a>
+                  <a class="text-decoration-none" href="create.php?type=evaluation?intern=<?= $intern['numetu'] ?>">
+                    <span class="fas fa-fw fa-2x fa-file-signature text-warning"></span>
+                  </a>
+                </td>
+              </tr>
+<?php
+}
+?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<?php
+  } elseif ($_SESSION['userType'] == 'superviseur') {
+    include( UTIL_CONNECT );
+
+    $sql_query = 'SELECT journal.numero,
+                         journal.DateJournal,
+                         journal.NomEtu,
+                         journal.nomsup,
+                         journal.commentaire,
+                         `acces_employeurs`.`Nom de l\'employeur`,
+                         `acces_employeurs`.`Nom de l\'entreprise`
+                  FROM   journal
+                         INNER JOIN acces_etu
+                                 ON journal.numetu = acces_etu.numetu
+                         INNER JOIN acces_employeurs
+                                 ON acces_etu.noemployeur = acces_employeurs.noemployeur
+                  ORDER  BY journal.numero DESC';
+
+    try {
+      $reports = $connectedDB->prepare($sql_query);
+      $reports->execute();
+      $reportCount = $reports->rowCount();
+
+    } catch(PDOException $e) {
+      echo 'Error: ' . $e->getMessage();
+    }
+?>
+    <div class="card my-4 border-0 shadow">
+      <div class="py-3 card-header bg-white">
+        <h2 class="h3">Tous les rapports (<strong><?= $reportCount ?></strong>)</h2>
+        <h3 class="h5">Liste des rapports complétés, du plus récent au plus ancien.</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Numéro</th>
+                <th scope="col">Date</th>
+                <th scope="col">Stagiaire</th>
+                <th scope="col">Superviseur</th>
+                <th scope="col">Employeur</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+<?php
+    foreach ($reports as $report) {
+?>
+              <tr>
+                <th scope="row"><?= $report['numero'] ?></th>
+                <td><?= $report['DateJournal'] ?></td>
+                <td><?= $report['NomEtu'] ?></td>
+                <td><?= $report['nomsup'] ?></td>
+                <td>
+                  <?= $report['Nom de l\'employeur'] ?>
+                  <br>
+                  <?= $report['Nom de l\'entreprise'] ?>
+                </td>
+                <td>
+                  <a class="text-decoration-none" href="display.php?id=<?= $report['numero'] ?>">
+                    <span class="fas fa-fw fa-2x fa-file text-secondary"></span>
+                  </a>
+                  <a class="text-decoration-none" href="display.php?id=<?= $report['numero'] ?>&action=comment">
+                    <span
+                      class="fas fa-fw fa-2x
+                      <?= $report['commentaire'] ?
+                          'fa-comment text-success' :
+                          'fa-comment-slash text-warning'
+                      ?>"
+                    >
+                    </span>
+                  </a>
+                  <a class="text-decoration-none" href="display.php?id=<?= $report['numero'] ?>&action=delete">
+                    <span class="fas fa-fw fa-2x fa-trash text-danger"></span>
+                  </a>
+                </td>
+              </tr>
+<?php
+    }
+?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<?php
+  } elseif ($_SESSION['userType'] == 'etudiant') {
+    include( UTIL_CONNECT );
+
+    $sql_query = 'SELECT numero,
+                         DateJournal
+                  FROM   journal
+                  WHERE  numetu = :username';
+
+    try {
+      $reports = $connectedDB->prepare($sql_query);
+      $reports->execute([
+        ':username' => $_SESSION['username']
+      ]);
+      $reportCount = $reports->rowCount();
+
+    } catch(PDOException $e) {
+      echo 'Error: ' . $e->getMessage();
+    }
+?>
+    <div class="card my-4 border-0 shadow">
+      <div class="py-3 card-header bg-white">
+        <h2 class="h3">Tous les rapports</h2>
+        <p class="fs-6">
+          Vous <?= $reportCount == 0 ? 'n\'' : '' ?>avez complété
+          <strong><?= $reportCount > 0 ? $reportCount : 'aucun' ?></strong>
+          journa<?= $reportCount <= 1 ? 'l' : 'ux' ?> de bord.
+          <a href="create.php?type=report">Créez une nouvelle entrée de journal.</a>
+        </p>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Numéro</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+<?php
+    foreach ($reports as $report) {
+?>
+              <tr>
+                <th scope="row"><?= $report['numero'] ?></th>
+                <td><?= $report['DateJournal'] ?></td>
+                <td>
+                  <a class="text-decoration-none" href="display.php?id=<?= $report['numero'] ?>">
+                    <span class="fas fa-fw fa-2x fa-file text-secondary"></span>
+                  </a>
+                </td>
+              </tr>
+<?php
+    }
+?>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+<?php } ?>
+  </main>
 
   <!-- START INCLUDE FOOTER -->
 <?php

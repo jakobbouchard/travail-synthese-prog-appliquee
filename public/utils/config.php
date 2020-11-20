@@ -9,10 +9,11 @@
   define('UTIL_CONNECT',      DIR_UTILS . 'connect.php');
   define('UTIL_LOGOUT',       'logout.php');
 
-  define('DIR_ACCESS',        'access/');
+  define('DIR_ACCESS',        DIR_UTILS . 'access/');
+  define('ACCESS_CONNECTED',  DIR_ACCESS . 'connected.php');
 
-  define('DIR_FUNCTIONS',     'functions/');
-  define('FUNCTION_LOGIN',    DIR_UTILS . DIR_FUNCTIONS . 'login.php');
+  define('DIR_FUNCTIONS',     DIR_UTILS . 'functions/');
+  define('FUNCTION_LOGIN',    DIR_FUNCTIONS . 'login.php');
 
   define('HOME_TITLE',        'Tableau de bord');
 ?>

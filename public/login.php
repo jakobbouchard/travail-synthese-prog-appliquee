@@ -36,7 +36,9 @@
     <input class="form-control" type="text" id="username" name="username" value="<?= $username ?>" placeholder="Utilisateur" required autofocus>
     <label class ="visually-hidden" for="password">Mot de passe</label>
     <input class="form-control" type="password" id="password" name="password" placeholder="Mot de passe" required>
-    <button class="btn btn-lg btn-outline-primary btn-block mt-3" type="submit" name="login_user">Connexion</button>
+    <div class="d-grid">
+      <button class="btn btn-lg btn-primary mt-3" type="submit" name="login_user">Connexion</button>
+    </div>
     <p class="mt-5 mb-3 text-muted">Copyright &copy; <?= date("Y");?></p>
   </form>
 

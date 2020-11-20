@@ -12,8 +12,7 @@
     } elseif (array_key_exists('postdata', $_SESSION)) {
       $username = trim($_SESSION['postdata']['username']);
       $password = trim($_SESSION['postdata']['password']);
-
-      include( UTIL_CONNECT );
+      $usertype = $sql_query = '';
 
       // Récupérer l'utilisateur
       switch (strlen($username)) {
@@ -24,6 +23,7 @@
                         FROM   acces_employeurs
                         WHERE  noemployeur = :username
                         LIMIT  1";
+          $userType = 'employeur';
           break;
 
         case 5:
@@ -33,6 +33,7 @@
                         FROM   acces_adm
                         WHERE  noemploye = :username
                         LIMIT  1";
+          $userType = 'superviseur';
           break;
 
         case 7:
@@ -42,6 +43,7 @@
                         FROM   acces_etu
                         WHERE  numetu = :username
                         LIMIT  1";
+          $userType = 'etudiant';
           break;
 
         default:
@@ -53,6 +55,8 @@
           exit;
           break;
       }
+
+      include( UTIL_CONNECT );
 
       try {
         $stmt = $connectedDB->prepare($sql_query);
@@ -68,14 +72,16 @@
       // Si les identifiants sont corrects, générer la session et naviguer au tableau de bord
       if ($user['password'] == $password) {
         session_regenerate_id(true);
+        $_SESSION['connected'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['displayName'] = $user['displayName'];
+        $_SESSION['userType'] = $userType;
 
         // Déconnecter la base de données, détruire les variables
         $connectedDB = null;
         unset($_SESSION['postdata'], $password);
 
-        header('location: index.php');
+        header('location: ./');
         exit;
 
       } else {
