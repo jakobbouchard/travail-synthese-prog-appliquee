@@ -74,10 +74,10 @@ foreach ($interns as $intern) {
                 <td><?= $intern['nomsup'] ?></td>
                 <td>
                   <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
-                    <span class="fas fa-file fa-fw fa-2x text-success"></span>
+                    <span class="fas fa-file fa-fw fa-2x text-secondary"></span>
                   </a>
                   <a class="text-decoration-none" href="create.php?type=evaluation?intern=<?= $intern['numetu'] ?>">
-                    <span class="fas fa-fw fa-2x fa-file-signature text-warning"></span>
+                    <span class="fas fa-fw fa-2x fa-file-signature text-danger"></span>
                   </a>
                 </td>
               </tr>
@@ -94,32 +94,38 @@ foreach ($interns as $intern) {
   } elseif ($_SESSION['userType'] == 'superviseur') {
     include( UTIL_CONNECT );
 
-    $sql_query = 'SELECT journal.numero,
-                         journal.DateJournal,
-                         journal.NomEtu,
-                         journal.nomsup,
-                         journal.commentaire,
-                         `acces_employeurs`.`Nom de l\'employeur`,
-                         `acces_employeurs`.`Nom de l\'entreprise`
-                  FROM   journal
-                         INNER JOIN acces_etu
-                                 ON journal.numetu = acces_etu.numetu
-                         INNER JOIN acces_employeurs
-                                 ON acces_etu.noemployeur = acces_employeurs.noemployeur
-                  ORDER  BY journal.numero DESC';
+    if (!isset($_GET['list-evaluations'])) {
+      $sql_query = 'SELECT journal.numero,
+                           journal.DateJournal,
+                           journal.NomEtu,
+                           journal.nomsup,
+                           journal.commentaire,
+                           `acces_employeurs`.`Nom de l\'employeur`,
+                           `acces_employeurs`.`Nom de l\'entreprise`
+                    FROM   journal
+                           INNER JOIN acces_etu
+                                   ON journal.numetu = acces_etu.numetu
+                           INNER JOIN acces_employeurs
+                                   ON acces_etu.noemployeur = acces_employeurs.noemployeur
+                    ORDER  BY journal.numero DESC';
 
-    try {
-      $reports = $connectedDB->prepare($sql_query);
-      $reports->execute();
-      $reportCount = $reports->rowCount();
+      try {
+        $reports = $connectedDB->prepare($sql_query);
+        $reports->execute();
+        $reportCount = $reports->rowCount();
 
-    } catch(PDOException $e) {
-      echo 'Error: ' . $e->getMessage();
-    }
+      } catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+      }
 ?>
     <div class="card my-4 border-0 shadow">
       <div class="py-3 card-header bg-white">
-        <h2 class="h3">Tous les rapports (<strong><?= $reportCount ?></strong>)</h2>
+        <div class="d-flex justify-content-between">
+          <h2 class="h3">Tous les rapports (<strong><?= $reportCount ?></strong>)</h2>
+          <h2 class="h3">
+            <a href="index.php?list-evaluations">Voir la liste des évaluations</a>
+          </h2>
+        </div>
         <h3 class="h5">Liste des rapports complétés, du plus récent au plus ancien.</h3>
       </div>
       <div class="card-body">
@@ -137,7 +143,7 @@ foreach ($interns as $intern) {
             </thead>
             <tbody>
 <?php
-    foreach ($reports as $report) {
+      foreach ($reports as $report) {
 ?>
               <tr>
                 <th scope="row"><?= $report['numero'] ?></th>
@@ -147,7 +153,7 @@ foreach ($interns as $intern) {
                 <td>
                   <?= $report['Nom de l\'employeur'] ?>
                   <br>
-                  <?= $report['Nom de l\'entreprise'] ?>
+                  <em><?= $report['Nom de l\'entreprise'] ?></em>
                 </td>
                 <td>
                   <a class="text-decoration-none" href="display.php?id=<?= $report['numero'] ?>">
@@ -169,6 +175,73 @@ foreach ($interns as $intern) {
                 </td>
               </tr>
 <?php
+      }
+    } else {
+      $sql_query = 'SELECT acces_etu.numetu,
+                           acces_etu.nometu,
+                           acces_etu.nomsup,
+                           `acces_employeurs`.`Nom de l\'employeur`,
+                           `acces_employeurs`.`Nom de l\'entreprise`
+                    FROM   acces_etu
+                           INNER JOIN acces_employeurs
+                                   ON acces_etu.noemployeur = acces_employeurs.noemployeur
+                    ORDER  BY acces_etu.numetu ASC';
+
+      try {
+        $evaluations = $connectedDB->prepare($sql_query);
+        $evaluations->execute();
+        $evaluationCount = $evaluations->rowCount();
+
+      } catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+      }
+?>
+    <div class="card my-4 border-0 shadow">
+      <div class="py-3 card-header bg-white">
+        <div class="d-flex justify-content-between">
+          <h2 class="h3">Toutes les évaluations (<strong><?= $evaluationCount ?></strong>)</h2>
+          <h2 class="h3">
+            <a href="index.php">Retourner à la liste des rapports</a>
+          </h2>
+        </div>
+        <h3 class="h5">Liste des stagiaires, en ordre de numéro étudiant.</h3>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Numéro</th>
+                <th scope="col">Étudiant</th>
+                <th scope="col">Superviseur</th>
+                <th scope="col">Employeur</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+<?php
+      foreach ($evaluations as $evaluation) {
+?>
+              <tr>
+                <th scope="row"><?= $evaluation['numetu'] ?></th>
+                <td><?= $evaluation['nometu'] ?></td>
+                <td><?= $evaluation['nomsup'] ?></td>
+                <td>
+                  <?= $evaluation['Nom de l\'employeur'] ?>
+                  <br>
+                  <em><?= $evaluation['Nom de l\'entreprise'] ?></em>
+                </td>
+                <td>
+                  <a class="text-decoration-none" href="evaluations/interns/<?= $evaluation['numetu'] ?>.html">
+                    <span class="fas fa-file fa-fw fa-2x text-secondary"></span>
+                  </a>
+                  <a class="text-decoration-none" href="evaluations/interns/<?= $evaluation['numetu'] ?>.html">
+                    <span class="fas fa-fw fa-2x fa-trash text-danger"></span>
+                  </a>
+                </td>
+              </tr>
+<?php
+      }
     }
 ?>
             </tbody>
