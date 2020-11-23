@@ -304,7 +304,7 @@ foreach ($interns as $intern) {
                   <a class="text-decoration-none" href="display.php?id=<?= $report['numero'] ?>">
                     <span class="fas fa-fw fa-2x fa-file text-secondary"></span>
                   </a>
-<?php if ($report['commentaire']) { ?>
+<?php if (!empty($report['commentaire'])) { ?>
                   <a class="text-decoration-none" href="display.php?id=<?= $report['numero'] ?>#comment">
                     <span class="fas fa-fw fa-2x fa-comment text-success"></span>
                   </a>
