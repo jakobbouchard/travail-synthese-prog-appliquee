@@ -123,7 +123,9 @@ foreach ($interns as $intern) {
         <div class="d-flex justify-content-between">
           <h2 class="h3">Tous les rapports (<strong><?= $reportCount ?></strong>)</h2>
           <h2 class="h3">
-            <a href="index.php?list-evaluations">Voir la liste des évaluations</a>
+            <a href="index.php?list-evaluations">
+              Voir la liste des évaluations des stagiaires
+            </a>
           </h2>
         </div>
         <h3 class="h5">Liste des rapports complétés, du plus récent au plus ancien.</h3>
@@ -188,9 +190,9 @@ foreach ($interns as $intern) {
                     ORDER  BY acces_etu.numetu ASC';
 
       try {
-        $evaluations = $connectedDB->prepare($sql_query);
-        $evaluations->execute();
-        $evaluationCount = $evaluations->rowCount();
+        $interns = $connectedDB->prepare($sql_query);
+        $interns->execute();
+        $internCount = $interns->rowCount();
 
       } catch(PDOException $e) {
         echo 'Error: ' . $e->getMessage();
@@ -199,7 +201,7 @@ foreach ($interns as $intern) {
     <div class="card my-4 border-0 shadow">
       <div class="py-3 card-header bg-white">
         <div class="d-flex justify-content-between">
-          <h2 class="h3">Toutes les évaluations (<strong><?= $evaluationCount ?></strong>)</h2>
+          <h2 class="h3">Tous les stagiaires (<strong><?= $internCount ?></strong>)</h2>
           <h2 class="h3">
             <a href="index.php">Retourner à la liste des rapports</a>
           </h2>
@@ -215,27 +217,27 @@ foreach ($interns as $intern) {
                 <th scope="col">Étudiant</th>
                 <th scope="col">Superviseur</th>
                 <th scope="col">Employeur</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Grille d'évaluation</th>
               </tr>
             </thead>
             <tbody>
 <?php
-      foreach ($evaluations as $evaluation) {
+      foreach ($interns as $intern) {
 ?>
               <tr>
-                <th scope="row"><?= $evaluation['numetu'] ?></th>
-                <td><?= $evaluation['nometu'] ?></td>
-                <td><?= $evaluation['nomsup'] ?></td>
+                <th scope="row"><?= $intern['numetu'] ?></th>
+                <td><?= $intern['nometu'] ?></td>
+                <td><?= $intern['nomsup'] ?></td>
                 <td>
-                  <?= $evaluation['Nom de l\'employeur'] ?>
+                  <?= $intern['Nom de l\'employeur'] ?>
                   <br>
-                  <em><?= $evaluation['Nom de l\'entreprise'] ?></em>
+                  <em><?= $intern['Nom de l\'entreprise'] ?></em>
                 </td>
                 <td>
-                  <a class="text-decoration-none" href="evaluations/interns/<?= $evaluation['numetu'] ?>.html">
+                  <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
                     <span class="fas fa-file fa-fw fa-2x text-secondary"></span>
                   </a>
-                  <a class="text-decoration-none" href="evaluations/interns/<?= $evaluation['numetu'] ?>.html">
+                  <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
                     <span class="fas fa-fw fa-2x fa-trash text-danger"></span>
                   </a>
                 </td>
