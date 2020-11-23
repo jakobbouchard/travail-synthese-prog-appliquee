@@ -39,7 +39,7 @@
     <div class="d-grid">
       <button class="btn btn-lg btn-primary mt-3" type="submit" name="login_user">Connexion</button>
     </div>
-    <p class="mt-5 mb-3 text-muted">Copyright &copy; <?= date("Y");?></p>
+    <p class="mt-5 mb-3 text-muted">Copyright &copy; <?= date("Y") ?></p>
   </form>
 
   <!-- START INCLUDE FOOTER -->
