@@ -272,9 +272,9 @@ include(ACCESS_CONNECTED);
                     <div class="py-3 card-header bg-white">
                       <h2 class="h3">Tous les rapports</h2>
                       <p class="fs-6">
-                        Vous <?= $reportCount == 0 ? 'n\'' : '' ?>avez complété
+                        Vous <?= $reportCount == 0 ? 'n\'avez' : 'avez' ?> complété
                         <strong><?= $reportCount > 0 ? $reportCount : 'aucun' ?></strong>
-                        journa<?= $reportCount <= 1 ? 'l' : 'ux' ?> de bord.
+                        <?= $reportCount <= 1 ? 'journal' : 'journaux' ?> de bord.
                         <a href="create.php?type=report">Créez une nouvelle entrée de journal.</a>
                       </p>
                     </div>
