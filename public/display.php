@@ -10,6 +10,11 @@ $page_title = DISPLAY_TITLE;
 include(ACCESS_CONNECTED);
 include(ACCESS_NO_EMPLOYER);
 
+// Ajouter les fonctions pour commenter et supprimer si l'utilisateur est superviseur
+if ($_SESSION['userType'] == 'superviseur') {
+  include(FUNCTION_DISPLAY);
+}
+
 // Si la page est accédée sans numéro de rapport, retourner à l'accueil
 if (empty($_GET['id'])) {
   header('location: /');
@@ -42,9 +47,9 @@ if (empty($_GET['id'])) {
     <?php
     include(UTIL_CONNECT);
 
-    $sql_query = 'SELECT *
+    $sql_query = "SELECT *
                   FROM   journal
-                  WHERE  numero = :id';
+                  WHERE  numero = :id";
 
     try {
       $reports = $connectedDB->prepare($sql_query);
@@ -155,19 +160,31 @@ if (empty($_GET['id'])) {
 
         if ($_SESSION['userType'] == 'superviseur') {
         ?>
-          <fieldset>
-            <legend class="mt-4">
-              <label for="commentaire">
-                <?= empty($report['commentaire']) ? 'Ajouter' : 'Modifier' ?> un commentaire :
-              </label>
-            </legend>
-            <div class="row">
-              <div class="col-md-6">
-                <textarea class="form-control" name="commentaire" rows="5" id="commentaire" <?= $_GET['action'] == 'comment' ? 'autofocus' : '' ?>></textarea>
+          <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+          <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+            <fieldset>
+              <legend class="mt-4">
+                <label for="commentaire">
+                  <?= empty($report['commentaire']) ? 'Ajouter' : 'Modifier' ?> un commentaire :
+                </label>
+              </legend>
+              <div class="row">
+                <div class="col-md-6">
+                  <textarea class="form-control" name="commentaire" rows="5"
+                    id="commentaire" <?= $_GET['action'] == 'comment' ? 'autofocus' : '' ?>
+                    ></textarea>
+                </div>
               </div>
-            </div>
-          </fieldset>
-          <button class="btn btn-primary mt-2"><?= empty($report['commentaire']) ? 'Ajouter' : 'Modifier' ?></button>
+            </fieldset>
+            <button
+              type="submit"
+              name="send"
+              value="comment"
+              class="btn btn-primary mt-2"
+              >
+              <?= empty($report['commentaire']) ? 'Ajouter' : 'Modifier' ?>
+            </button>
+          </form>
         <?php } ?>
       </div>
     </div>
