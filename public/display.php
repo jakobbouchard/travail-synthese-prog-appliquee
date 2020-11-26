@@ -39,6 +39,12 @@ if (empty($_GET['id'])) {
   ?>
   <!-- END INCLUDE HEADER -->
 
+  <?php if (isset($_GET['message'])) { ?>
+    <div class="alert alert-success popup-alert mt-4" role="alert">
+      <?= $_GET['message'] ?>
+    </div>
+  <?php } ?>
+
   <main class="container">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2"><?= $page_title ?></h1>
@@ -64,7 +70,7 @@ if (empty($_GET['id'])) {
 
     // Rediriger à l'accueil si le rapport n'existe pas
     if (!$report['numero']) {
-      header('location: /');
+      header('location: /?message=Le%20rapport%20que%20vous%20tentez%20d%27acc%C3%A9der%20n%27existe%20pas&error');
       exit;
     }
 
@@ -73,7 +79,7 @@ if (empty($_GET['id'])) {
       $_SESSION['userType'] == 'etudiant' &&
       $report['numetu'] != $_SESSION['username']
     ) {
-      header('location: /');
+      header('location: /?message=Vous%20n%27avez%20pas%20acc%C3%A8s%20%C3%A0%20cette%20page&error');
       exit;
     }
     ?>
@@ -186,7 +192,7 @@ if (empty($_GET['id'])) {
             <button
               type="submit"
               name="send"
-              value="comment"
+              value="<?= empty($report['commentaire']) ? 'add' : 'edit' ?>"
               class="btn btn-primary mt-2"
               >
               <?= empty($report['commentaire']) ? 'Ajouter' : 'Modifier' ?>

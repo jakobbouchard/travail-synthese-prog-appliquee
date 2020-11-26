@@ -13,6 +13,7 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
   } elseif (array_key_exists('postdata', $_SESSION)) {
     $id = trim($_SESSION['postdata']['id']);
     $commentaire = trim($_SESSION['postdata']['commentaire']);
+    $message = '';
 
     include(UTIL_CONNECT);
 
@@ -28,10 +29,18 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
     } catch (PDOException $e) {
       echo 'Error: ' . $e->getMessage();
     }
+    if ($_SESSION['postdata']['send'] == 'add') {
+      $message = 'Le%20commentaire%20a%20%C3%A9t%C3%A9%20ajout%C3%A9%20avec%20succ%C3%A8s';
+    } elseif ($_SESSION['postdata']['send'] == 'edit') {
+      $message = 'Le%20commentaire%20a%20%C3%A9t%C3%A9%20modifi%C3%A9%20avec%20succ%C3%A8s';
+    }
 
     // Déconnecter la base de données, détruire les variables
     unset($_SESSION['postdata']);
     $connectedDB = null;
+
+    header("location: /display.php?id={$id}&message={$message}");
+    exit;
   }
 } elseif ($_GET['action'] == 'delete') {
   $id = trim($_GET['id']);
@@ -54,6 +63,6 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
   unset($_SESSION['postdata']);
   $connectedDB = null;
 
-  header('location: /');
+  header('location: /?message=Le%20rapport%20a%20%C3%A9t%C3%A9%20supprim%C3%A9');
   exit;
 }
