@@ -321,6 +321,7 @@ include(ACCESS_CONNECTED);
                 <?php } ?>
   </main>
 
+  <script src="script/confirmDeletion.js"></script>
   <!-- START INCLUDE FOOTER -->
   <?php
   include(VIEW_FOOTER);
