@@ -41,7 +41,7 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
   try {
     $sql_query = "DELETE
                   FROM   journal
-                  WHERE  id = :id";
+                  WHERE  numero = :id";
     $stmt = $connectedDB->prepare($sql_query);
     $stmt->execute([
       ':id' => $id
@@ -53,4 +53,7 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
   // Déconnecter la base de données, détruire les variables
   unset($_SESSION['postdata']);
   $connectedDB = null;
+
+  header('location: /');
+  exit;
 }
