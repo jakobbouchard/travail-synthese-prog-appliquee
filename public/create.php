@@ -47,6 +47,7 @@ include(ACCESS_CONNECTED);
           ':username' => $_SESSION['username']
         ]);
         $student = $students->fetch();
+        $connectedDB = null;
       } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
       }
@@ -90,7 +91,7 @@ include(ACCESS_CONNECTED);
         </div>
 
         <div class="card-body">
-          <form name="jdb" method="post">
+          <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" name="report" method="POST">
             <fieldset>
               <legend>Activités significatives :</legend>
               <div class="row">
