@@ -178,7 +178,7 @@ include(ACCESS_CONNECTED);
                   <?php
                   }
                 } else {
-                  "SELECT acces_etu.numetu,
+                  $sql_query = "SELECT acces_etu.numetu,
                                        acces_etu.nometu,
                                        acces_etu.nomsup,
                                        `acces_employeurs`.`Nom de l'employeur`,
