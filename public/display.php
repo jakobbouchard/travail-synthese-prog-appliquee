@@ -62,6 +62,12 @@ if (empty($_GET['id'])) {
       echo 'Error: ' . $e->getMessage();
     }
 
+    // Rediriger à l'accueil si le rapport n'existe pas
+    if (!$report['numero']) {
+      header('location: /');
+      exit;
+    }
+
     // Rediriger les étudiants qui essaient de voir le rapport d'un d'autre
     if (
       $_SESSION['userType'] == 'etudiant' &&
@@ -172,6 +178,7 @@ if (empty($_GET['id'])) {
                 <div class="col-md-6">
                   <textarea class="form-control" name="commentaire" rows="5"
                     id="commentaire" <?= $_GET['action'] == 'comment' ? 'autofocus' : '' ?>
+                    required
                     ><?= $report['commentaire'] ?></textarea>
                 </div>
               </div>
