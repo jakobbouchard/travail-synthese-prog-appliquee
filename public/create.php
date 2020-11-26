@@ -8,6 +8,7 @@ require('utils/config.php');
 $page_title = CREATE_TITLE;
 
 include(ACCESS_CONNECTED);
+include(FUNCTION_CREATE);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -63,8 +64,8 @@ include(ACCESS_CONNECTED);
             </h2>
           </div>
           <h3 class="h5 border-bottom border-dark pb-3 mb-3">
-            Rapport d'étape créé par <?= $_SESSION["displayName"] ?> et remis à
-            <?= $student["nomsup"] ?> le <?= date("d-m-Y") ?>.
+            Rapport d'étape créé par <?= $_SESSION['displayName'] ?> et remis à
+            <?= $student['nomsup'] ?> le <?= date('d-m-Y') ?>.
           </h3>
           <div>
             <p>
@@ -91,7 +92,8 @@ include(ACCESS_CONNECTED);
         </div>
 
         <div class="card-body">
-          <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" name="report" method="POST">
+          <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
+          <input type="hidden" name="nom-superviseur" value="<?= $student['nomsup'] ?>">
             <fieldset>
               <legend>Activités significatives :</legend>
               <div class="row">
@@ -165,7 +167,7 @@ include(ACCESS_CONNECTED);
             </fieldset>
 
             <div class="mt-4">
-              <button type="submit" name="send" class="btn btn-lg btn-primary">Envoyer</button>
+              <button type="submit" name="send" value="report" class="btn btn-lg btn-primary">Envoyer</button>
               <button type="reset" name="reset" class="btn btn-lg btn-danger">Réinitialiser</button>
             </div>
           </form>
