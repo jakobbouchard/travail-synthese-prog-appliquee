@@ -52,6 +52,7 @@ if (empty($_GET['id'])) {
         ':id' => $_GET['id']
       ]);
       $report = $reports->fetch();
+      $connectedDB = null;
     } catch (PDOException $e) {
       echo 'Error: ' . $e->getMessage();
     }

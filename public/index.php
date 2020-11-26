@@ -46,6 +46,7 @@ include(ACCESS_CONNECTED);
         $interns->execute([
           ':username' => $_SESSION['username']
         ]);
+        $connectedDB = null;
       } catch (PDOException $e) {
         echo 'Error: ' . $e->getMessage();
       }
@@ -113,6 +114,7 @@ include(ACCESS_CONNECTED);
           $reports = $connectedDB->prepare($sql_query);
           $reports->execute();
           $reportCount = $reports->rowCount();
+          $connectedDB = null;
         } catch (PDOException $e) {
           echo 'Error: ' . $e->getMessage();
         }
@@ -190,6 +192,7 @@ include(ACCESS_CONNECTED);
                     $interns = $connectedDB->prepare($sql_query);
                     $interns->execute();
                     $internCount = $interns->rowCount();
+                    $connectedDB = null;
                   } catch (PDOException $e) {
                     echo 'Error: ' . $e->getMessage();
                   }
@@ -264,6 +267,7 @@ include(ACCESS_CONNECTED);
                     ':username' => $_SESSION['username']
                   ]);
                   $reportCount = $reports->rowCount();
+                  $connectedDB = null;
                 } catch (PDOException $e) {
                   echo 'Error: ' . $e->getMessage();
                 }
