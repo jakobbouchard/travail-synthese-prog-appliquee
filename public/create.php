@@ -1,31 +1,30 @@
 <?php
-  session_start();
-  ob_start();
-  date_default_timezone_set("America/New_York");
+session_start();
+ob_start();
+date_default_timezone_set("America/New_York");
 
-  // Importer les constantes et changer le titre de la page
-  require( 'utils/config.php' );
-  $page_title = CREATE_TITLE;
+// Importer les constantes et changer le titre de la page
+require('utils/config.php');
+$page_title = CREATE_TITLE;
 
-  include( ACCESS_CONNECTED );
-  include( ACCESS_NO_SUPERVISOR );
+include(ACCESS_CONNECTED);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
   <!-- START INCLUDE META -->
-<?php
+  <?php
   include(VIEW_META);
-?>
+  ?>
   <!-- END INCLUDE META -->
 </head>
 
 <body>
   <!-- START INCLUDE HEADER -->
-<?php
+  <?php
   include(VIEW_HEADER);
-?>
+  ?>
   <!-- END INCLUDE HEADER -->
 
   <main class="container">
@@ -35,11 +34,12 @@
 
     <?php
     if ($_GET['type'] == 'report') {
+      include(ACCESS_ONLY_STUDENT);
       include(UTIL_CONNECT);
 
       $sql_query = 'SELECT nomsup
-                    FROM   acces_etu
-                    WHERE  numetu = :username';
+            FROM   acces_etu
+            WHERE  numetu = :username';
 
       try {
         $students = $connectedDB->prepare($sql_query);
@@ -73,16 +73,16 @@
               accomplit dans l'entreprise ainsi que les apprentissages que ces
               dernières lui permettent de réaliser.
             </p>
-            <h4 class="h5">Objectifs </h4>
+            <h4 class="h5">Objectifs</h4>
             <ul>
               <li>Objectiver de façon continue son vécu professionnel.</li>
               <li> Consigner ses réflexions. </li>
             </ul>
-            <h4 class="h5"> Directives</h4>
+            <h4 class="h5">Directives</h4>
             <p>
               Tout au long de son stage, la ou le stagiaire doit complétéer
               des rapports d'étapes. <strong>Deux ou trois fois dans la
-              session</strong>, elle ou il complète un rapport d'étape et le
+                session</strong>, elle ou il complète un rapport d'étape et le
               transmet à son superviseur de stage par l'entremise du site Web
               de stages.
             </p>
@@ -174,9 +174,9 @@
   </main>
 
   <!-- START INCLUDE FOOTER -->
-<?php
+  <?php
   include(VIEW_FOOTER);
-?>
+  ?>
   <!-- END INCLUDE FOOTER -->
 
 </body>

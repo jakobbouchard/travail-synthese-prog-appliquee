@@ -1,6 +1,5 @@
 <?php
-  if ($_SESSION['userType'] == 'employeur') {
-    header('location: /');
-    exit;
-  }
-?>
+if ($_SESSION['userType'] == 'employeur') {
+  header('location: /');
+  exit;
+}

@@ -9,8 +9,6 @@ try {
   $connectedDB = new PDO("mysql:host=$DB_host;dbname=$DB_name;charset=utf8", $DB_user, $DB_pwd);
   // set the PDO error mode to exception
   $connectedDB->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-} catch(PDOException $e) {
+} catch (PDOException $e) {
   echo 'Error: ' . $e->getMessage();
 }
-?>

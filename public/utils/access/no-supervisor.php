@@ -1,6 +1,5 @@
 <?php
-  if ($_SESSION['userType'] != 'etudiant') {
-    header('location: /');
-    exit;
-  }
-?>
+if ($_SESSION['userType'] != 'etudiant') {
+  header('location: /');
+  exit;
+}
