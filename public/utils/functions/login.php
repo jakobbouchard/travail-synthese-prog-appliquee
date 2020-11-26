@@ -79,12 +79,12 @@ if (isset($_POST['login_user']) || isset($_SESSION['postdata']['login_user'])) {
       $connectedDB = null;
       unset($_SESSION['postdata'], $password);
 
-      header('location: ./');
+      header('location: /');
       exit;
     } else {
       // Déconnecter la base de données, détruire les variables
-      $connectedDB = null;
       unset($_SESSION['postdata'], $password);
+      $connectedDB = null;
 
       header('location: login.php?error');
       exit;
