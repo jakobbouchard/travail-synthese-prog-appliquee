@@ -19,6 +19,7 @@ define('DIR_FUNCTIONS',          DIR_UTILS . 'functions/');
 define('FUNCTION_LOGIN',         DIR_FUNCTIONS . 'login.php');
 define('FUNCTION_CREATE',        DIR_FUNCTIONS . 'create.php');
 define('FUNCTION_DISPLAY',       DIR_FUNCTIONS . 'display.php');
+define('FUNCTION_INDEX',         DIR_FUNCTIONS . 'index.php');
 
 define('HOME_TITLE',             'Tableau de bord');
 define('CREATE_TITLE',           'Créer une entrée');
