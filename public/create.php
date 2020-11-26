@@ -38,9 +38,9 @@ include(FUNCTION_CREATE);
       include(ACCESS_ONLY_STUDENT);
       include(UTIL_CONNECT);
 
-      $sql_query = 'SELECT nomsup
+      $sql_query = "SELECT nomsup
             FROM   acces_etu
-            WHERE  numetu = :username';
+            WHERE  numetu = :username";
 
       try {
         $students = $connectedDB->prepare($sql_query);
@@ -178,9 +178,9 @@ include(FUNCTION_CREATE);
       include(ACCESS_ONLY_EMPLOYER);
       include(UTIL_CONNECT);
 
-      $sql_query = 'SELECT nometu
+      $sql_query = "SELECT nometu
                     FROM   acces_etu
-                    WHERE  numetu = :intern';
+                    WHERE  numetu = :intern";
 
       try {
         $interns = $connectedDB->prepare($sql_query);

@@ -35,11 +35,11 @@ include(ACCESS_CONNECTED);
     if ($_SESSION['userType'] == 'employeur') {
       include(UTIL_CONNECT);
 
-      $sql_query = 'SELECT numetu,
+      $sql_query = "SELECT numetu,
                            nometu,
                            nomsup
                     FROM   acces_etu
-                    WHERE  noemployeur = :username';
+                    WHERE  noemployeur = :username";
 
       try {
         $interns = $connectedDB->prepare($sql_query);
@@ -96,19 +96,19 @@ include(ACCESS_CONNECTED);
       include(UTIL_CONNECT);
 
       if (!isset($_GET['list-evaluations'])) {
-        $sql_query = 'SELECT journal.numero,
+        $sql_query = "SELECT journal.numero,
                              journal.DateJournal,
                              journal.NomEtu,
                              journal.nomsup,
                              journal.commentaire,
-                             `acces_employeurs`.`Nom de l\'employeur`,
-                             `acces_employeurs`.`Nom de l\'entreprise`
+                             `acces_employeurs`.`Nom de l'employeur`,
+                             `acces_employeurs`.`Nom de l'entreprise`
                       FROM   journal
                              INNER JOIN acces_etu
                                      ON journal.numetu = acces_etu.numetu
                              INNER JOIN acces_employeurs
                                      ON acces_etu.noemployeur = acces_employeurs.noemployeur
-                      ORDER  BY journal.numero DESC';
+                      ORDER  BY journal.numero DESC";
 
         try {
           $reports = $connectedDB->prepare($sql_query);
@@ -178,15 +178,15 @@ include(ACCESS_CONNECTED);
                   <?php
                   }
                 } else {
-                  $sql_query = 'SELECT acces_etu.numetu,
+                  "SELECT acces_etu.numetu,
                                        acces_etu.nometu,
                                        acces_etu.nomsup,
-                                       `acces_employeurs`.`Nom de l\'employeur`,
-                                       `acces_employeurs`.`Nom de l\'entreprise`
+                                       `acces_employeurs`.`Nom de l'employeur`,
+                                       `acces_employeurs`.`Nom de l'entreprise`
                                 FROM   acces_etu
                                        INNER JOIN acces_employeurs
                                                ON acces_etu.noemployeur = acces_employeurs.noemployeur
-                                ORDER  BY acces_etu.numetu ASC';
+                                ORDER  BY acces_etu.numetu ASC";
 
                   try {
                     $interns = $connectedDB->prepare($sql_query);
@@ -255,11 +255,11 @@ include(ACCESS_CONNECTED);
               } elseif ($_SESSION['userType'] == 'etudiant') {
                 include(UTIL_CONNECT);
 
-                $sql_query = 'SELECT numero,
+                $sql_query = "SELECT numero,
                                      DateJournal,
                                      commentaire
                               FROM   journal
-                              WHERE  numetu = :username';
+                              WHERE  numetu = :username";
 
                 try {
                   $reports = $connectedDB->prepare($sql_query);
