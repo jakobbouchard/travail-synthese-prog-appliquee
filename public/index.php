@@ -7,6 +7,11 @@ require('utils/config.php');
 $page_title = HOME_TITLE;
 
 include(ACCESS_CONNECTED);
+
+// Ajouter les fonctions pour supprimer si l'utilisateur est superviseur
+if ($_SESSION['userType'] == 'superviseur') {
+  include(FUNCTION_INDEX);
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -74,12 +79,15 @@ include(ACCESS_CONNECTED);
                     <td><?= $intern['nometu'] ?></td>
                     <td><?= $intern['nomsup'] ?></td>
                     <td>
-                      <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
-                        <span class="fas fa-fw fa-2x fa-clipboard-check text-success"></span>
-                      </a>
-                      <a class="text-decoration-none" href="create.php?type=evaluation&intern=<?= $intern['numetu'] ?>">
-                        <span class="fas fa-fw fa-2x fa-notes-medical text-danger"></span>
-                      </a>
+                      <?php if (file_exists("evaluations/interns/{$intern['numetu']}.html")) { ?>
+                        <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
+                          <span class="fas fa-fw fa-2x fa-clipboard-check text-success"></span>
+                        </a>
+                      <?php } else { ?>
+                        <a class="text-decoration-none" href="create.php?type=evaluation&intern=<?= $intern['numetu'] ?>">
+                          <span class="fas fa-fw fa-2x fa-notes-medical text-danger"></span>
+                        </a>
+                      <?php } ?>
                     </td>
                   </tr>
                 <?php
@@ -233,12 +241,16 @@ include(ACCESS_CONNECTED);
                                   <em><?= $intern['Nom de l\'entreprise'] ?></em>
                                 </td>
                                 <td>
-                                  <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
-                                    <span class="fas fa-file fa-fw fa-2x text-secondary"></span>
-                                  </a>
-                                  <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
-                                    <span class="fas fa-fw fa-2x fa-trash text-danger"></span>
-                                  </a>
+                                  <?php if (file_exists("evaluations/interns/{$intern['numetu']}.html")) { ?>
+                                    <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
+                                      <span class="fas fa-file fa-fw fa-2x text-secondary"></span>
+                                    </a>
+                                    <a class="text-decoration-none" href="/?intern=<?= $intern['numetu'] ?>&action=delete">
+                                      <span class="fas fa-fw fa-2x fa-trash text-danger"></span>
+                                    </a>
+                                  <?php } else { ?>
+                                    L'employeur n'a pas complété d'évaluation
+                                  <?php } ?>
                                 </td>
                               </tr>
                             <?php
