@@ -172,7 +172,7 @@ if (empty($_GET['id'])) {
                 <div class="col-md-6">
                   <textarea class="form-control" name="commentaire" rows="5"
                     id="commentaire" <?= $_GET['action'] == 'comment' ? 'autofocus' : '' ?>
-                    ></textarea>
+                    ><?= $report['commentaire'] ?></textarea>
                 </div>
               </div>
             </fieldset>
