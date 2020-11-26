@@ -1,5 +1,4 @@
 <?php
-if ($_SESSION['userType'] != 'etudiant') {
-  header('location: /');
+if ($_SESSION['userType'] == 'superviseur') {
   exit;
 }
