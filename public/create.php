@@ -239,6 +239,8 @@ include(FUNCTION_CREATE);
 
         <div class="card-body">
           <form action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>" name="evaluation" method="POST">
+            <input type="hidden" name="internNumber" value="<?= $_GET['intern'] ?>">
+            <input type="hidden" name="intern" value="<?= $intern['nometu'] ?>">
             <fieldset>
               <legend>Motivation</legend>
               <ol>
@@ -1151,7 +1153,7 @@ include(FUNCTION_CREATE);
             </fieldset>
 
             <div class="mt-4">
-              <button type="submit" name="send" class="btn btn-lg btn-primary">Envoyer</button>
+              <button type="submit" name="send" value="evaluation" class="btn btn-lg btn-primary">Envoyer</button>
               <button type="reset" name="reset" class="btn btn-lg btn-danger">Réinitialiser</button>
             </div>
           </form>
