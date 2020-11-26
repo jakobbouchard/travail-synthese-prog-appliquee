@@ -75,10 +75,10 @@ include(ACCESS_CONNECTED);
                     <td><?= $intern['nomsup'] ?></td>
                     <td>
                       <a class="text-decoration-none" href="evaluations/interns/<?= $intern['numetu'] ?>.html">
-                        <span class="fas fa-file fa-fw fa-2x text-secondary"></span>
+                        <span class="fas fa-fw fa-2x fa-clipboard-check text-success"></span>
                       </a>
                       <a class="text-decoration-none" href="create.php?type=evaluation&intern=<?= $intern['numetu'] ?>">
-                        <span class="fas fa-fw fa-2x fa-file-signature text-danger"></span>
+                        <span class="fas fa-fw fa-2x fa-notes-medical text-danger"></span>
                       </a>
                     </td>
                   </tr>
