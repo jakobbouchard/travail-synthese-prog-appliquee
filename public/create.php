@@ -251,7 +251,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="motivation" id="motivation-1" value="10">
+                        <input class="form-check-input" type="radio" required name="motivation" id="motivation-1" value="10">
                         <label class="form-label" for="motivation-1">
                           10
                         </label>
@@ -268,7 +268,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="motivation" id="motivation-2" value="8">
+                        <input class="form-check-input" type="radio" required name="motivation" id="motivation-2" value="8">
                         <label class="form-label" for="motivation-2">
                           8
                         </label>
@@ -285,7 +285,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="motivation" id="motivation-3" value="6">
+                        <input class="form-check-input" type="radio" required name="motivation" id="motivation-3" value="6">
                         <label class="form-label" for="motivation-3">
                           6
                         </label>
@@ -302,7 +302,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="motivation" id="motivation-4" value="4">
+                        <input class="form-check-input" type="radio" required name="motivation" id="motivation-4" value="4">
                         <label class="form-label" for="motivation-4">
                           4
                         </label>
@@ -319,7 +319,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="motivation" id="motivation-5" value="2">
+                        <input class="form-check-input" type="radio" required name="motivation" id="motivation-5" value="2">
                         <label class="form-label" for="motivation-5">
                           2
                         </label>
@@ -342,7 +342,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="autonomie" id="autonomie-1" value="10">
+                        <input class="form-check-input" type="radio" required name="autonomie" id="autonomie-1" value="10">
                         <label class="form-label" for="autonomie-1">
                           10
                         </label>
@@ -359,7 +359,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="autonomie" id="autonomie-2" value="8">
+                        <input class="form-check-input" type="radio" required name="autonomie" id="autonomie-2" value="8">
                         <label class="form-label" for="autonomie-2">
                           8
                         </label>
@@ -376,7 +376,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="autonomie" id="autonomie-3" value="6">
+                        <input class="form-check-input" type="radio" required name="autonomie" id="autonomie-3" value="6">
                         <label class="form-label" for="autonomie-3">
                           6
                         </label>
@@ -393,7 +393,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="autonomie" id="autonomie-4" value="4">
+                        <input class="form-check-input" type="radio" required name="autonomie" id="autonomie-4" value="4">
                         <label class="form-label" for="autonomie-4">
                           4
                         </label>
@@ -410,7 +410,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="autonomie" id="autonomie-5" value="2">
+                        <input class="form-check-input" type="radio" required name="autonomie" id="autonomie-5" value="2">
                         <label class="form-label" for="autonomie-5">
                           2
                         </label>
@@ -433,7 +433,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="qualite" id="qualite-1" value="25">
+                        <input class="form-check-input" type="radio" required name="qualite" id="qualite-1" value="25">
                         <label class="form-label" for="qualite-1">
                           25
                         </label>
@@ -450,7 +450,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="qualite" id="qualite-2" value="20">
+                        <input class="form-check-input" type="radio" required name="qualite" id="qualite-2" value="20">
                         <label class="form-label" for="qualite-2">
                           20
                         </label>
@@ -467,7 +467,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="qualite" id="qualite-3" value="15">
+                        <input class="form-check-input" type="radio" required name="qualite" id="qualite-3" value="15">
                         <label class="form-label" for="qualite-3">
                           15
                         </label>
@@ -484,7 +484,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="qualite" id="qualite-4" value="10">
+                        <input class="form-check-input" type="radio" required name="qualite" id="qualite-4" value="10">
                         <label class="form-label" for="qualite-4">
                           10
                         </label>
@@ -501,7 +501,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="qualite" id="qualite-5" value="5">
+                        <input class="form-check-input" type="radio" required name="qualite" id="qualite-5" value="5">
                         <label class="form-label" for="qualite-5">
                           5
                         </label>
@@ -524,7 +524,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rythme" id="rythme-1" value="5">
+                        <input class="form-check-input" type="radio" required name="rythme" id="rythme-1" value="5">
                         <label class="form-label" for="rythme-1">
                           5
                         </label>
@@ -541,7 +541,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rythme" id="rythme-2" value="4">
+                        <input class="form-check-input" type="radio" required name="rythme" id="rythme-2" value="4">
                         <label class="form-label" for="rythme-2">
                           4
                         </label>
@@ -558,7 +558,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rythme" id="rythme-3" value="3">
+                        <input class="form-check-input" type="radio" required name="rythme" id="rythme-3" value="3">
                         <label class="form-label" for="rythme-3">
                           3
                         </label>
@@ -575,7 +575,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rythme" id="rythme-4" value="2">
+                        <input class="form-check-input" type="radio" required name="rythme" id="rythme-4" value="2">
                         <label class="form-label" for="rythme-4">
                           2
                         </label>
@@ -592,7 +592,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="rythme" id="rythme-5" value="1">
+                        <input class="form-check-input" type="radio" required name="rythme" id="rythme-5" value="1">
                         <label class="form-label" for="rythme-5">
                           1
                         </label>
@@ -615,7 +615,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="responsabilite" id="responsabilite-1" value="10">
+                        <input class="form-check-input" type="radio" required name="responsabilite" id="responsabilite-1" value="10">
                         <label class="form-label" for="responsabilite-1">
                           10
                         </label>
@@ -632,7 +632,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="responsabilite" id="responsabilite-2" value="8">
+                        <input class="form-check-input" type="radio" required name="responsabilite" id="responsabilite-2" value="8">
                         <label class="form-label" for="responsabilite-2">
                           8
                         </label>
@@ -649,7 +649,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="responsabilite" id="responsabilite-3" value="6">
+                        <input class="form-check-input" type="radio" required name="responsabilite" id="responsabilite-3" value="6">
                         <label class="form-label" for="responsabilite-3">
                           6
                         </label>
@@ -666,7 +666,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="responsabilite" id="responsabilite-4" value="4">
+                        <input class="form-check-input" type="radio" required name="responsabilite" id="responsabilite-4" value="4">
                         <label class="form-label" for="responsabilite-4">
                           4
                         </label>
@@ -683,7 +683,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="responsabilite" id="responsabilite-5" value="2">
+                        <input class="form-check-input" type="radio" required name="responsabilite" id="responsabilite-5" value="2">
                         <label class="form-label" for="responsabilite-5">
                           2
                         </label>
@@ -706,7 +706,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="aptitudes" id="aptitudes-1" value="10">
+                        <input class="form-check-input" type="radio" required name="aptitudes" id="aptitudes-1" value="10">
                         <label class="form-label" for="aptitudes-1">
                           10
                         </label>
@@ -723,7 +723,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="aptitudes" id="aptitudes-2" value="8">
+                        <input class="form-check-input" type="radio" required name="aptitudes" id="aptitudes-2" value="8">
                         <label class="form-label" for="aptitudes-2">
                           8
                         </label>
@@ -740,7 +740,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="aptitudes" id="aptitudes-3" value="6">
+                        <input class="form-check-input" type="radio" required name="aptitudes" id="aptitudes-3" value="6">
                         <label class="form-label" for="aptitudes-3">
                           6
                         </label>
@@ -757,7 +757,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="aptitudes" id="aptitudes-4" value="4">
+                        <input class="form-check-input" type="radio" required name="aptitudes" id="aptitudes-4" value="4">
                         <label class="form-label" for="aptitudes-4">
                           4
                         </label>
@@ -774,7 +774,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="aptitudes" id="aptitudes-5" value="2">
+                        <input class="form-check-input" type="radio" required name="aptitudes" id="aptitudes-5" value="2">
                         <label class="form-label" for="aptitudes-5">
                           2
                         </label>
@@ -797,7 +797,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="resolution" id="resolution-1" value="10">
+                        <input class="form-check-input" type="radio" required name="resolution" id="resolution-1" value="10">
                         <label class="form-label" for="resolution-1">
                           10
                         </label>
@@ -814,7 +814,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="resolution" id="resolution-2" value="8">
+                        <input class="form-check-input" type="radio" required name="resolution" id="resolution-2" value="8">
                         <label class="form-label" for="resolution-2">
                           8
                         </label>
@@ -831,7 +831,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="resolution" id="resolution-3" value="6">
+                        <input class="form-check-input" type="radio" required name="resolution" id="resolution-3" value="6">
                         <label class="form-label" for="resolution-3">
                           6
                         </label>
@@ -848,7 +848,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="resolution" id="resolution-4" value="4">
+                        <input class="form-check-input" type="radio" required name="resolution" id="resolution-4" value="4">
                         <label class="form-label" for="resolution-4">
                           4
                         </label>
@@ -865,7 +865,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="resolution" id="resolution-5" value="2">
+                        <input class="form-check-input" type="radio" required name="resolution" id="resolution-5" value="2">
                         <label class="form-label" for="resolution-5">
                           2
                         </label>
@@ -888,7 +888,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="collaboration" id="collaboration-1" value="10">
+                        <input class="form-check-input" type="radio" required name="collaboration" id="collaboration-1" value="10">
                         <label class="form-label" for="collaboration-1">
                           10
                         </label>
@@ -905,7 +905,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="collaboration" id="collaboration-2" value="8">
+                        <input class="form-check-input" type="radio" required name="collaboration" id="collaboration-2" value="8">
                         <label class="form-label" for="collaboration-2">
                           8
                         </label>
@@ -922,7 +922,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="collaboration" id="collaboration-3" value="6">
+                        <input class="form-check-input" type="radio" required name="collaboration" id="collaboration-3" value="6">
                         <label class="form-label" for="collaboration-3">
                           6
                         </label>
@@ -939,7 +939,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="collaboration" id="collaboration-4" value="4">
+                        <input class="form-check-input" type="radio" required name="collaboration" id="collaboration-4" value="4">
                         <label class="form-label" for="collaboration-4">
                           4
                         </label>
@@ -956,7 +956,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="collaboration" id="collaboration-5" value="2">
+                        <input class="form-check-input" type="radio" required name="collaboration" id="collaboration-5" value="2">
                         <label class="form-label" for="collaboration-5">
                           2
                         </label>
@@ -979,7 +979,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="assiduite" id="assiduite-1" value="5">
+                        <input class="form-check-input" type="radio" required name="assiduite" id="assiduite-1" value="5">
                         <label class="form-label" for="assiduite-1">
                           5
                         </label>
@@ -996,7 +996,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="assiduite" id="assiduite-2" value="4">
+                        <input class="form-check-input" type="radio" required name="assiduite" id="assiduite-2" value="4">
                         <label class="form-label" for="assiduite-2">
                           4
                         </label>
@@ -1013,7 +1013,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="assiduite" id="assiduite-3" value="3">
+                        <input class="form-check-input" type="radio" required name="assiduite" id="assiduite-3" value="3">
                         <label class="form-label" for="assiduite-3">
                           3
                         </label>
@@ -1030,7 +1030,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="assiduite" id="assiduite-4" value="2">
+                        <input class="form-check-input" type="radio" required name="assiduite" id="assiduite-4" value="2">
                         <label class="form-label" for="assiduite-4">
                           2
                         </label>
@@ -1047,7 +1047,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="assiduite" id="assiduite-5" value="1">
+                        <input class="form-check-input" type="radio" required name="assiduite" id="assiduite-5" value="1">
                         <label class="form-label" for="assiduite-5">
                           1
                         </label>
@@ -1071,7 +1071,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ponctualite" id="ponctualite-1" value="5">
+                        <input class="form-check-input" type="radio" required name="ponctualite" id="ponctualite-1" value="5">
                         <label class="form-label" for="ponctualite-1">
                           5
                         </label>
@@ -1088,7 +1088,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ponctualite" id="ponctualite-2" value="4">
+                        <input class="form-check-input" type="radio" required name="ponctualite" id="ponctualite-2" value="4">
                         <label class="form-label" for="ponctualite-2">
                           4
                         </label>
@@ -1105,7 +1105,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ponctualite" id="ponctualite-3" value="3">
+                        <input class="form-check-input" type="radio" required name="ponctualite" id="ponctualite-3" value="3">
                         <label class="form-label" for="ponctualite-3">
                           3
                         </label>
@@ -1122,7 +1122,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ponctualite" id="ponctualite-4" value="2">
+                        <input class="form-check-input" type="radio" required name="ponctualite" id="ponctualite-4" value="2">
                         <label class="form-label" for="ponctualite-4">
                           2
                         </label>
@@ -1139,7 +1139,7 @@ include(FUNCTION_CREATE);
                     </div>
                     <div class="col-6">
                       <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ponctualite" id="ponctualite-5" value="1">
+                        <input class="form-check-input" type="radio" required name="ponctualite" id="ponctualite-5" value="1">
                         <label class="form-label" for="ponctualite-5">
                           1
                         </label>
