@@ -82,7 +82,7 @@ if (empty($_GET['id'])) {
         <div class="d-flex justify-content-between">
           <h2 class="h3">Rapport d'étape</h2>
           <h2 class="h3">
-            <a class="btn btn-primary" href="index.php">
+            <a class="btn btn-primary" href="/">
               Retourner au tableau de bord
             </a>
           </h2>

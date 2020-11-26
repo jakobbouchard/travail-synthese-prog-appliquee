@@ -124,7 +124,7 @@ include(ACCESS_CONNECTED);
             <div class="d-flex justify-content-between">
               <h2 class="h3">Tous les rapports (<strong><?= $reportCount ?></strong>)</h2>
               <h2 class="h3">
-                <a class="btn btn-primary" href="index.php?list-evaluations">
+                <a class="btn btn-primary" href="/?list-evaluations">
                   Voir la liste des évaluations des stagiaires
                 </a>
               </h2>
@@ -202,7 +202,7 @@ include(ACCESS_CONNECTED);
                       <div class="d-flex justify-content-between">
                         <h2 class="h3">Tous les stagiaires (<strong><?= $internCount ?></strong>)</h2>
                         <h2 class="h3">
-                          <a class="btn btn-primary" href="index.php">Retourner à la liste des rapports</a>
+                          <a class="btn btn-primary" href="/">Retourner à la liste des rapports</a>
                         </h2>
                       </div>
                       <h3 class="h5">Liste des stagiaires, en ordre de numéro étudiant.</h3>
