@@ -156,7 +156,7 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
                   <div class="d-flex justify-content-between">
                     <h2 class="h3">Évaluation d'un stagiaire</h2>
                     <h2 class="h3">
-                      <a class="btn btn-primary" href="/">
+                      <a class="btn btn-primary" href="/?list-evaluations">
                         Retourner au tableau de bord
                       </a>
                     </h2>
@@ -195,16 +195,14 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
         EVALUATION;
 
         // Création et écriture du fichier
-        $evaluationFolder = 'evaluations';
-        $internsFolder = 'interns';
         $fileName = "{$internNumber}.html";
 
-        if (!file_exists($evaluationFolder)) {
-          if (!mkdir("{$evaluationFolder}//{$internsFolder}", 0777, true)) {
+        if (!file_exists('evaluations')) {
+          if (!mkdir("evaluations//interns", 0777, true)) {
             die('Failed to create folders...');
           }
         }
-        $file = fopen("{$evaluationFolder}//{$internsFolder}//{$fileName}", "w");
+        $file = fopen("evaluations//interns//{$fileName}", "w");
         fwrite($file, $content);
         fclose($file);
 
