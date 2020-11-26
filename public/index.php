@@ -31,6 +31,12 @@ if ($_SESSION['userType'] == 'superviseur') {
   ?>
   <!-- END INCLUDE HEADER -->
 
+  <?php if (isset($_GET['message'])) { ?>
+    <div class="alert <?= isset($_GET['error']) ? 'alert-danger' : 'alert-success' ?> popup-alert mt-4" role="alert">
+      <?= $_GET['message'] ?>
+    </div>
+  <?php } ?>
+
   <main class="container">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
       <h1 class="h2"><?= $page_title ?></h1>

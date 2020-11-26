@@ -78,6 +78,9 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
         unset($_SESSION['postdata']);
         $connectedDB = null;
 
+        header('location: /?message=Le%20rapport%20a%20%C3%A9t%C3%A9%20enregistr%C3%A9');
+        exit;
+
         break;
 
         // Créer une évaluation
@@ -207,6 +210,9 @@ if (isset($_POST['send']) || isset($_SESSION['postdata']['send'])) {
         fclose($file);
 
         unset($_SESSION['postdata']);
+
+        header('location: /?message=L%27%C3%A9valuation%20a%20%C3%A9t%C3%A9%20enregistr%C3%A9e');
+        exit;
 
         break;
     }
