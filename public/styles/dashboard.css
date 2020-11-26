@@ -9,16 +9,19 @@ body {
 }
 
 /*
- * Popup for account-related forms
+ * General
  */
 
-.popup-alert {
-  position: fixed;
-  width: 20%;
-  top: 0;
-  left: 50%;
-  margin-left: -10%; /* Negative half of width. */
-  z-index: 1050;
+.transition-200 {
+  transition: all .2s ease-in-out;
+}
+
+.opacity-0 {
+  opacity: 0%;
+}
+
+.opacity-100 {
+  opacity: 100%;
 }
 
 /*
