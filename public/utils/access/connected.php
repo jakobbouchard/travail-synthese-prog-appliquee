@@ -1,5 +1,4 @@
 <?php
-  if (!$_SESSION['connected']) {
-    include( UTIL_LOGOUT );
-  }
-?>
+if (!$_SESSION['connected']) {
+  include(UTIL_LOGOUT);
+}
